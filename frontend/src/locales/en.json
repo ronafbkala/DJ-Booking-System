@@ -1,0 +1,21 @@
+{
+  "welcome": "Welcome to Alafrah-DJ Booking!",
+  "about": "About Us",
+  "contact": "Contact",
+  "calendar_title": "Available Dates",
+  "book_now": "Book now via WhatsApp!",
+  "instruction": "To book a time, click on an available date in the calendar.",
+  "about_text": "We are two passionate DJs with years of experience in weddings, parties, and events. Our mission is to bring unforgettable energy and music to every occasion.",
+  "footer_text": "© 2025 Alafrah Company. All rights reserved.",
+  "lang": "en",
+  "gallery_title": "Gallery",
+  "gallery_description": "Here are some of our best moments from past events.",
+  "see_more": "See more",
+  "form_title": "Book",
+  "name_placeholder": "Your name",
+  "phone_placeholder": "Phone number",
+  "confirm_button": "Confirm booking",
+  "success_message": "✅ Booking saved!",
+  "error_message": "❌ Something went wrong. Please try again."
+
+}
