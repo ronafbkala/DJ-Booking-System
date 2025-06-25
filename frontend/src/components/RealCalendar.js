@@ -1,92 +1,11 @@
-/*import React, { useEffect, useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import './RealCalendar.css';
-import { enUS, arSA } from 'date-fns/locale';
-
-const whatsappNumber = '9647503404';
-
-function RealCalendar({ translations }) {
-    const selectedLocale = translations.lang === 'ar' ? 'ar' : 'en-US';
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [bookedDates, setBookedDates] = useState([]);
-    const [showForm, setShowForm] = useState(false);
-    const [formDate, setFormDate] = useState('');
-    const [formName, setFormName] = useState('');
-    const [formPhone, setFormPhone] = useState('');
-
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
-    const apiUrl = `${API_BASE_URL}/api/bookings/dates`;
-
-
-
-
-    useEffect(() => {
-        console.log("🌐 Backend URL:", apiUrl); // ← Kontroll i alla lägen
-        fetch(apiUrl)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("✅ Fetched booked dates:", data);
-                setBookedDates(data);
-            })
-            .catch((err) => console.error("❌ API fetch failed:", err));
-    }, []);
-
-    //console.log("🔍 Backend URL:", `${API_BASE_URL}/api/bookings/dates`);
-
-
-    const isBooked = (date) => {
-        const formatted = date.toISOString().split('T')[0];
-        return bookedDates.includes(formatted);
-    };
-
-    const isPastDate = (date) => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        return date < today;
-    };
-
-    const handleDateClick = (date) => {
-        if (isPastDate(date) || isBooked(date)) return;
-        const formatted = date.toISOString().split('T')[0];
-        setFormDate(formatted);
-        setShowForm(true);
-        const message = encodeURIComponent(`Hello! I'd like to book you on ${formatted}`);
-        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-    };
-
-
-
-    return (
-        <div className="calendar-wrapper">
-            <h2>{translations.calendar_title}</h2>
-            <p className="instruction">{translations.instruction}</p>
-            <Calendar
-                onClickDay={handleDateClick}
-                tileClassName={({ date }) => {
-                    if (isPastDate(date)) return 'past';
-                    return isBooked(date) ? 'booked' : 'available';
-                }}
-                locale={selectedLocale}
-            />
-        </div>
-    );
-}
-
-export default RealCalendar;
-
-
- */
-
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './RealCalendar.css';
-import { enUS, arSA } from 'date-fns/locale';
 
 const whatsappNumber = '9647503404';
 
-function RealCalendar({ translations }) {
+function RealCalendar({ translations, isAdminLoggedIn }) {
     const selectedLocale = translations.lang === 'ar' ? 'ar' : 'en-US';
     const [selectedDate, setSelectedDate] = useState(null);
     const [bookedDates, setBookedDates] = useState([]);
@@ -115,8 +34,11 @@ function RealCalendar({ translations }) {
     }, []);
 
     const isBooked = (date) => {
-        const formatted = date.toISOString().split('T')[0];
+        const formatted = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+            .toISOString()
+            .split('T')[0];
         return bookedDates.includes(formatted);
+
     };
 
     const isPastDate = (date) => {
@@ -128,11 +50,20 @@ function RealCalendar({ translations }) {
     const handleDateClick = (date) => {
         if (isPastDate(date) || isBooked(date)) return;
 
-        const formatted = date.toISOString().split('T')[0];
+        const formatted = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+            .toISOString()
+            .split('T')[0];
         localStorage.setItem("pendingBookingDate", formatted);
+        setFormDate(formatted);
+        setShowForm(true);
 
-        const message = encodeURIComponent(`Hello! I'd like to book you on ${formatted}`);
-        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+
+
+        if (!isAdminLoggedIn) {
+            // Endast skicka till WhatsApp om inte admin
+            const message = encodeURIComponent(`Hello! I'd like to book you on ${formatted}`);
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
     };
 
 

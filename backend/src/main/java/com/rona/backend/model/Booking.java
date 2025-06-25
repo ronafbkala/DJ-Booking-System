@@ -27,4 +27,8 @@ public class Booking {
 
     @Column(nullable = false)
     private String phone;
+
+    @Column(nullable = false)
+    private String status = "pending"; // default status: "pending"
+
 }

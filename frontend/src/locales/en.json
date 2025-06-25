@@ -16,6 +16,24 @@
   "phone_placeholder": "Phone number",
   "confirm_button": "Confirm booking",
   "success_message": "✅ Booking saved!",
-  "error_message": "❌ Something went wrong. Please try again."
+  "error_message": "❌ Something went wrong. Please try again.",
+  "are_you_data_owner": "Are you a data-owner?",
+  "yes": "Yes",
+  "no": "No",
+  "enter_verification_code": "Enter verification code:",
+  "verify": "Verify",
+  "invalid_code": "❌ Invalid code. Please try again.",
+  "admin_title": "Admin Panel",
+  "admin_welcome": "Welcome! You are now logged in as a data-owner.",
+  "admin_all_bookings": "All bookings",
+  "date": "Date",
+  "delete": "Delete",
+  "confirm_delete": "Are you sure you want to delete this booking?",
+  "edit": "Edit",
+  "save": "Save",
+  "cancel": "Cancel",
+  "actions": "Actions",
+  "admin_button": "Admin Page",
+  "approve": "Approve"
 
 }

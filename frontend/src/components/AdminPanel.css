@@ -1,0 +1,65 @@
+.admin-panel {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.admin-panel h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 0.5rem;
+}
+
+.admin-panel p {
+    text-align: center;
+    color: #555;
+}
+
+.admin-panel h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.admin-panel table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.admin-panel th,
+.admin-panel td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.admin-panel th {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.admin-panel button {
+    padding: 6px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2ca8a8; /* ← din nya färg */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.admin-panel button:hover {
+    background-color: #228989;
+}
+
+.admin-panel input[type="text"],
+.admin-panel input[type="date"] {
+    padding: 5px;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
